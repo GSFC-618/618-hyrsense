@@ -6,6 +6,7 @@ Last Updated: 2025-11-07
 
 TO DO: 
     - Change how external dependencies are mapped to these functions
+    - instead use [package_name].[function] instead of import and from
 """
 
 ## Imports: import function dependency
@@ -13,6 +14,7 @@ import earthaccess
 from shapely import geometry
 #!!! TODO - this isnt the best way to define a function that has module dependencies. 
 # Should make these agnostic of libraries, which should be loaded in the notebook !!!
+# TODO: source functions explicitly using [package_name].[function] instead of import
 
 def get_shapely_object(result:earthaccess.results.DataGranule):
     """

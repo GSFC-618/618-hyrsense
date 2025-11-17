@@ -1,9 +1,24 @@
-# helper_functions.py
+"""
+This module contains various functions to be used with the HYR-SENSE tutorials,
+including functions for working with rast/gis metadata and ROIs.
 
-import earthaccess #TODO - this isnt the best way to define a function that has module dependencies. Should make these agnostic of libraries, which should be loaded in the notebook
+Last Updated: 2025-11-07
+
+TO DO: 
+    - Change how external dependencies are mapped to these functions
+    - instead use [package_name].[function] instead of import and from
+"""
+
+## Imports: import function dependency
+import earthaccess
+from shapely import geometry
+#!!! TODO - this isnt the best way to define a function that has module dependencies. 
+# Should make these agnostic of libraries, which should be loaded in the notebook !!!
+# TODO: source functions explicitly using [package_name].[function] instead of import
+
 def get_shapely_object(result:earthaccess.results.DataGranule):
     """
-    Retrieve geospatial information from ECOSTRESS granule footprints.
+    Retrieve geospatial information from EMIT granule footprints.
     This function allows us to retrieve the geographic coverage for each granule and plot it on a map.
     
     :param 'result:earthaccess.results.DataGranule': a single data granule from earthaccess data search
@@ -27,7 +42,6 @@ def get_shapely_object(result:earthaccess.results.DataGranule):
     else:
          raise ValueError('Provided result does not contain bounding boxes/polygons or is incompatible.')
     return(shape)
-
 
 # Convert bounding coordinates to Folium-ready data for mapping
 def convert_bounds(bbox, invert_y=False):
